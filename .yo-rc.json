@@ -1,0 +1,8 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "Refactor to Architecture",
+    "packageVersion": "1.0.0",
+    "useSass": false,
+    "deployToGithubPages": false
+  }
+}
