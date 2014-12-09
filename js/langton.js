@@ -1,4 +1,4 @@
-/*global document, requestAnimationFrame, Reveal, Observable*/
+/*global document, requestAnimationFrame, Reveal, Observable, console*/
 ;(function(Reveal, Observable){
 	'use strict';
 
@@ -207,10 +207,27 @@
 	};
 
 	var langton;
+	var shouldContinue = true;
 	function tick(){
 		langton.tick();
-		requestAnimationFrame(tick);
+		if (shouldContinue) {
+			requestAnimationFrame(tick);
+		}
 	}
+	var keyHandler = (function(){
+		return function(keyEvent) {
+			switch(keyEvent.keyCode) {
+			case 65: /* a */
+				console.log('fired');
+				shouldContinue = false;
+				var body = document.getElementsByTagName('body')[0];
+				body.removeEventListener('keydown', keyHandler);
+				break;
+			default:
+				break; /* do nothing */
+			}
+		};
+	})();
 	Reveal.addEventListener('langton', function(){
 		if (!langton) {
 			var langtonContainer = document.getElementById('langtons-ant');
@@ -222,6 +239,9 @@
 			new LangtonView(langton, langtonContainer);
 
 			tick();
+
+			var body = document.getElementsByTagName('body')[0];
+			body.addEventListener('keydown', keyHandler);
 		}
 	});
 })(Reveal, Observable);
