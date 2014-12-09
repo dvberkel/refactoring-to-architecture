@@ -1,4 +1,4 @@
-/*global document, requestAnimationFrame, Reveal, Observable, console*/
+/*global document, requestAnimationFrame, Reveal, Observable*/
 ;(function(Reveal, Observable){
 	'use strict';
 
@@ -218,7 +218,6 @@
 		return function(keyEvent) {
 			switch(keyEvent.keyCode) {
 			case 65: /* a */
-				console.log('fired');
 				shouldContinue = false;
 				var body = document.getElementsByTagName('body')[0];
 				body.removeEventListener('keydown', keyHandler);
