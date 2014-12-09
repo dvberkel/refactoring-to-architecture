@@ -1,9 +1,15 @@
 [
     "index.md",
     {
-		"filename": "timer.html",
+        "filename": "timer.html",
+        "attr": {
+            "data-state": "timer"
+        }
+    },
+    {
+		"filename": "langtons-ant.html",
 		"attr": {
-			"data-state": "timer"
+			"data-state": "langton"
 		}
 	}
 ]

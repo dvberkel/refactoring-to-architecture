@@ -1,5 +1,5 @@
-/* global document, AudioContext, XMLHttpRequest, requestAnimationFrame, Reveal*/
-;(function(Reveal){
+/* global document, AudioContext, XMLHttpRequest, requestAnimationFrame, Reveal, Observable*/
+;(function(Reveal, Observable){
 	'use strict';
 
 	function asArray(target) {
@@ -14,21 +14,6 @@
 		n = n.toString();
 		return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 	}
-
-
-	var Observable = function(){
-		this.listeners = {};
-	};
-	Observable.prototype.on = function(event, callback){
-		this.listeners[event] = this.listeners[event] || [];
-		this.listeners[event].push(callback);
-	};
-	Observable.prototype.notify = function(event) {
-		var args = Array.prototype.slice.call(arguments, 1);
-		(this.listeners[event] || []).forEach(function(callback){
-			callback.apply(this, args);
-		}.bind(this));
-	};
 
 	var AudioData = function(){
 		Observable.call(this);
@@ -183,4 +168,4 @@
 			timer.on('stopped', player.stop.bind(player));
 		}
 	});
-})(Reveal);
+})(Reveal, Observable);

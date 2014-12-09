@@ -1,3 +1,10 @@
 .introduction.timer {
 	font-family: monospace;
 }
+
+.langton.container {
+	width: 480px;
+	height: 480px;
+	margin-left: auto;
+	margin-right: auto;
+}
