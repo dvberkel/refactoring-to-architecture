@@ -89,33 +89,35 @@
 		}.bind(this));
 	};
 
+	var timer;
+	function tickTimer() {
+		timer.tick();
+		if (!timer.isFinished()) {
+			requestAnimationFrame(tickTimer);
+		}
+	}
+
+	function keyHandler(keyEvent) {
+		switch(keyEvent.keyCode) {
+		case 65: /* a */
+			timer.start();
+			tickTimer();
+			break;
+		default:
+			break; /* do nothing */
+		}
+	}
 	Reveal.addEventListener('timer', function(){
-		var timer = new Timer(3 * 60 * 1000);
+		if (!timer) {
+			timer = new Timer(3 * 60 * 1000);
 
-		new TimerView(timer, document.getElementsByClassName('introduction')[0]);
+			new TimerView(timer, document.getElementsByClassName('introduction')[0]);
 
-		function tickTimer() {
-			timer.tick();
-			if (!timer.isFinished()) {
-				requestAnimationFrame(tickTimer);
-			}
+			var body = document.getElementsByTagName('body')[0];
+			body.addEventListener('keydown', keyHandler);
+			timer.on('stopped', function(){
+				body.removeEventListener('keydown', keyHandler);
+			});
 		}
-
-		function keyHandler(keyEvent) {
-			switch(keyEvent.keyCode) {
-			case 65: /* a */
-				timer.start();
-				tickTimer();
-				break;
-			default:
-				break; /* do nothing */
-			}
-		}
-
-		var body = document.getElementsByTagName('body')[0];
-		body.addEventListener('keydown', keyHandler);
-		timer.on('stopped', function(){
-			body.removeEventListener('keydown', keyHandler);
-		});
 	});
 })(Reveal);
