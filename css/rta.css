@@ -8,3 +8,57 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.turing-machine.container {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.turing-machine.container > .control > button {
+	font-size: 40px;
+}
+
+.state {
+    margin-top:5px;
+    margin-bottom:5px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #cccccc;
+}
+
+.state span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: relative;
+    bottom: -0.3em;
+	color: black;
+}
+
+.tape {
+    border-style: solid none;
+    border-color: #000000;
+    border-width: 2px;
+}
+
+.cell {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border-style: none solid none solid;
+    border-color: #cccccc;
+    border-width: 1px;
+    vertical-align: middle;
+}
+
+.cell.head {
+    border-color: #000000;
+	background: green;
+}

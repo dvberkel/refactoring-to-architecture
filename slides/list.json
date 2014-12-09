@@ -7,9 +7,15 @@
         }
     },
     {
-		"filename": "langtons-ant.html",
+        "filename": "langtons-ant.html",
+        "attr": {
+            "data-state": "langton"
+        }
+    },
+    {
+		"filename": "turing-machine.html",
 		"attr": {
-			"data-state": "langton"
+			"data-state": "turing-machine"
 		}
 	}
 ]
