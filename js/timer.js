@@ -36,6 +36,7 @@
 		this.buffer = null;
 	};
 	AudioData.prototype = Object.create(Observable.prototype);
+	AudioData.prototype.constructor = AudioData;
 	AudioData.prototype.setBuffer = function(buffer){
 		this.isLoaded = true;
 		this.buffer = buffer;
@@ -130,6 +131,7 @@
 	Player.prototype.createSource = function(){
 		var context = new AudioContext();
 		this.source = context.createBufferSource();
+		this.source.loop = true;
 		this.source.buffer = this.audioData.buffer;
 		this.source.connect(context.destination);
 	};
@@ -169,7 +171,7 @@
 	Reveal.addEventListener('timer', function(){
 		if (!timer) {
 			player = new Player(powerStarData);
-			timer = new Timer(/*3 * 60*/ 2 * 1000);
+			timer = new Timer(3 * 60 * 1000);
 
 			new TimerView(timer, document.getElementsByClassName('introduction')[0]);
 
