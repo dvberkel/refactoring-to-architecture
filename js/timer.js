@@ -178,6 +178,7 @@
 			timer.on('stopped', function(){
 				body.removeEventListener('keydown', keyHandler);
 			});
+			timer.on('stopped', player.stop.bind(player));
 		}
 	});
 })(Reveal);
