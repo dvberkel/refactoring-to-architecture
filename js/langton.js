@@ -181,6 +181,14 @@
 				sw * 1, sw * 1
 			);
 		});
+		context.fillStyle = 'rgba(255,0,0,0.5)';
+		context.fillRect(sw * -bbox.lx, sw * -bbox.ly, sw, sw);
+		context.fillStyle = 'rgba(0,255,0,0.5)';
+		var antPosition = this.model.ant.position;
+		context.fillRect(
+				sw * (antPosition.x - bbox.lx), sw * (antPosition.y - bbox.ly),
+				sw * 1, sw * 1
+		);
 	};
 	LangtonView.prototype.getContext = function(){
 		if (!this.context){
