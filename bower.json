@@ -2,6 +2,7 @@
   "name": "refactor-to-architecture",
   "version": "1.0.0",
   "dependencies": {
-    "reveal.js": "~2.6.1"
+    "reveal.js": "~2.6.1",
+    "tm": "~0.1.0"
   }
 }
