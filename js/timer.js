@@ -1,4 +1,4 @@
-/* global document, requestAnimationFrame, Reveal*/
+/* global document, AudioContext, XMLHttpRequest, requestAnimationFrame, Reveal*/
 ;(function(Reveal){
 	'use strict';
 
@@ -89,6 +89,31 @@
 		}.bind(this));
 	};
 
+	var context = new AudioContext();
+	var powerStarBuffer = null;
+	function loadStarPower() {
+		var request = new XMLHttpRequest();
+		request.open('GET', 'audio/power_star.mp3', true);
+		request.responseType = 'arraybuffer';
+
+		request.onload = function() {
+			context.decodeAudioData(request.response, function(buffer) {
+				powerStarBuffer = buffer;
+			}, function(error){
+				throw error;
+			});
+		};
+		request.send();
+	}
+	loadStarPower();
+
+	function playPowerStar() {
+		var source = context.createBufferSource();
+		source.buffer = powerStarBuffer;
+		source.connect(context.destination);
+		source.start(0);
+	}
+
 	var timer;
 	function tickTimer() {
 		timer.tick();
@@ -102,6 +127,7 @@
 		case 65: /* a */
 			timer.start();
 			tickTimer();
+			playPowerStar();
 			break;
 		default:
 			break; /* do nothing */
