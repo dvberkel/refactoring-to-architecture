@@ -15,6 +15,7 @@
 		return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
 	}
 
+
 	var Observable = function(){
 		this.listeners = {};
 	};
@@ -28,6 +29,35 @@
 			callback.apply(this, args);
 		}.bind(this));
 	};
+
+	var AudioData = function(){
+		Observable.call(this);
+		this.isLoaded = false;
+		this.buffer = null;
+	};
+	AudioData.prototype = Object.create(Observable.prototype);
+	AudioData.prototype.setBuffer = function(buffer){
+		this.isLoaded = true;
+		this.buffer = buffer;
+		this.notify('loaded');
+	};
+
+	var powerStarData = new AudioData();
+	(function loadPowerStar() {
+		var context = new AudioContext();
+		var request = new XMLHttpRequest();
+		request.open('GET', 'audio/power_star.mp3', true);
+		request.responseType = 'arraybuffer';
+
+		request.onload = function() {
+			context.decodeAudioData(request.response, function(buffer) {
+				powerStarData.setBuffer(buffer);
+			}, function(error){
+				throw error;
+			});
+		};
+		request.send();
+	})();
 
 	var Timer = function(duration){
 		Observable.call(this);
@@ -89,30 +119,26 @@
 		}.bind(this));
 	};
 
-	var context = new AudioContext();
-	var powerStarBuffer = null;
-	function loadStarPower() {
-		var request = new XMLHttpRequest();
-		request.open('GET', 'audio/power_star.mp3', true);
-		request.responseType = 'arraybuffer';
-
-		request.onload = function() {
-			context.decodeAudioData(request.response, function(buffer) {
-				powerStarBuffer = buffer;
-			}, function(error){
-				throw error;
-			});
-		};
-		request.send();
-	}
-	loadStarPower();
-
-	function playPowerStar() {
-		var source = context.createBufferSource();
-		source.buffer = powerStarBuffer;
-		source.connect(context.destination);
-		source.start(0);
-	}
+	var Player = function(audioData){
+		this.audioData = audioData;
+		if (this.audioData.isLoaded) {
+			this.createSource();
+		} else {
+			this.audioData.on('loaded', this.createSource.bind(this));
+		}
+	};
+	Player.prototype.createSource = function(){
+		var context = new AudioContext();
+		this.source = context.createBufferSource();
+		this.source.buffer = this.audioData.buffer;
+		this.source.connect(context.destination);
+	};
+	Player.prototype.start = function(){
+		this.source.start(0);
+	};
+	Player.prototype.stop = function(){
+		this.source.stop();
+	};
 
 	var timer;
 	function tickTimer() {
@@ -122,20 +148,28 @@
 		}
 	}
 
-	function keyHandler(keyEvent) {
-		switch(keyEvent.keyCode) {
-		case 65: /* a */
-			timer.start();
-			tickTimer();
-			playPowerStar();
-			break;
-		default:
-			break; /* do nothing */
-		}
-	}
+	var player;
+	var keyHandler = (function(){
+		var alreadyHandled = false;
+		return function(keyEvent) {
+			switch(keyEvent.keyCode) {
+			case 65: /* a */
+				if (!alreadyHandled) {
+					alreadyHandled = true;
+					timer.start();
+					tickTimer();
+					player.start();
+				}
+				break;
+			default:
+				break; /* do nothing */
+			}
+		};
+	})();
 	Reveal.addEventListener('timer', function(){
 		if (!timer) {
-			timer = new Timer(3 * 60 * 1000);
+			player = new Player(powerStarData);
+			timer = new Timer(/*3 * 60*/ 2 * 1000);
 
 			new TimerView(timer, document.getElementsByClassName('introduction')[0]);
 
