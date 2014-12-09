@@ -1,1 +1,9 @@
-["index.md"]
+[
+    "index.md",
+    {
+		"filename": "timer.html",
+		"attr": {
+			"data-state": "timer"
+		}
+	}
+]
