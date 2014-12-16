@@ -1,17 +1,20 @@
 [
     "index.md",
     "meeting-dukes.md",
-	{
-		"attr": {
-			"data-background": "image/cube.jpg"
-		}
-	},
+    {
+        "attr": {
+            "data-background": "image/cube.jpg"
+        }
+    },
     {
         "filename": "timer.html",
         "attr": {
             "data-state": "timer"
         }
     },
+	[
+		"3-acts.md"
+	],
     {
         "filename": "langtons-ant.html",
         "attr": {
