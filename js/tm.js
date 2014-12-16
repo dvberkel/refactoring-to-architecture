@@ -17,7 +17,6 @@
 				'u': {
 
 				}
-
 			};
 
 			var startState = 's';
