@@ -28,5 +28,6 @@
         }
     },
     "program.md",
-    "universality.md"
+    "universality.md",
+    "halting-problem.md"
 ]
