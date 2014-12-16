@@ -28,5 +28,6 @@
         "attr": {
             "data-state": "turing-machine"
         }
-    }
+    },
+    "program.md"
 ]
