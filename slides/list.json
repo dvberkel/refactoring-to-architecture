@@ -40,5 +40,6 @@
         "h-does-not-exist.md"
     ],
     "unsolvable-problems.md",
-    "church-turing.md"
+    "church-turing.md",
+    "turing-complete.md"
 ]
