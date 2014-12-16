@@ -42,5 +42,11 @@
     "unsolvable-problems.md",
     "church-turing.md",
     "turing-complete.md",
-    "nand.md"
+    "nand.md",
+	{
+		"filename": "langtons-and.html",
+		"attr": {
+			"data-state": "langton-and"
+		}
+	}
 ]

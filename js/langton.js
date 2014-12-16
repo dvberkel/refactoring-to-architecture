@@ -73,10 +73,10 @@ iska = (function(Reveal, Observable){
 	Ant.prototype.turn = function(color){
 		switch(color) {
 		case Color.WHITE:
-			this.direction = this.direction.turnLeft();
+			this.direction = this.direction.turnRight();
 			break;
 		case Color.BLACK:
-			this.direction = this.direction.turnRight();
+			this.direction = this.direction.turnLeft();
 			break;
 		}
 	};
