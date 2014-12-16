@@ -29,15 +29,16 @@
     },
     "program.md",
     "universality.md",
-	[
-		"halting-problem.md",
-		"h.md",
-		"h-accent.md",
-		"p.md",
-		"p-resolution.md",
-		"p-paradox-loops.html",
-		"p-paradox-halts.html",
-		"h-does-not-exist.md"
-	],
-	"unsolvable-problems.md"
+    [
+        "halting-problem.md",
+        "h.md",
+        "h-accent.md",
+        "p.md",
+        "p-resolution.md",
+        "p-paradox-loops.html",
+        "p-paradox-halts.html",
+        "h-does-not-exist.md"
+    ],
+    "unsolvable-problems.md",
+    "church-turing.md"
 ]
