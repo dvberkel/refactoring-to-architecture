@@ -1,5 +1,6 @@
 [
     "index.md",
+    "meeting-dukes.md",
     {
         "filename": "timer.html",
         "attr": {
@@ -13,9 +14,9 @@
         }
     },
     {
-		"filename": "turing-machine.html",
-		"attr": {
-			"data-state": "turing-machine"
-		}
-	}
+        "filename": "turing-machine.html",
+        "attr": {
+            "data-state": "turing-machine"
+        }
+    }
 ]
