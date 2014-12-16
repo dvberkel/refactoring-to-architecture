@@ -12,9 +12,7 @@
             "data-state": "timer"
         }
     },
-    [
-        "3-acts.md"
-    ],
+    "3-acts.md",
     {
         "filename": "langtons-ant.html",
         "attr": {
