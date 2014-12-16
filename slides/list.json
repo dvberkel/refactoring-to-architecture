@@ -41,5 +41,6 @@
     ],
     "unsolvable-problems.md",
     "church-turing.md",
-    "turing-complete.md"
+    "turing-complete.md",
+    "nand.md"
 ]
