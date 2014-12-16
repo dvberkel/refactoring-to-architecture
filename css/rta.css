@@ -11,6 +11,7 @@
 
 .turing-machine.container {
     width: 640px;
+	height: 165px;
     margin-left: auto;
     margin-right: auto;
 }
