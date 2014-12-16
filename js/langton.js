@@ -1,5 +1,5 @@
-/*global document, requestAnimationFrame, Reveal, Observable*/
-;(function(Reveal, Observable){
+/*global document, Reveal, Observable, iska:true*/
+iska = (function(Reveal, Observable){
 	'use strict';
 
 	function extend(){
@@ -206,41 +206,12 @@
 		return this.canvas;
 	};
 
-	var langton;
-	var shouldContinue = true;
-	function tick(){
-		langton.tick();
-		if (shouldContinue) {
-			requestAnimationFrame(tick);
-		}
-	}
-	var keyHandler = (function(){
-		return function(keyEvent) {
-			switch(keyEvent.keyCode) {
-			case 65: /* a */
-				shouldContinue = false;
-				var body = document.getElementsByTagName('body')[0];
-				body.removeEventListener('keydown', keyHandler);
-				break;
-			default:
-				break; /* do nothing */
-			}
-		};
-	})();
-	Reveal.addEventListener('langton', function(){
-		if (!langton) {
-			var langtonContainer = document.getElementById('langtons-ant');
-
-			var ant = new Ant(Direction.NORTH, Position.at(0, 0));
-			var board = new Board();
-
-			langton = new Langton(ant, board);
-			new LangtonView(langton, langtonContainer);
-
-			tick();
-
-			var body = document.getElementsByTagName('body')[0];
-			body.addEventListener('keydown', keyHandler);
-		}
-	});
+	return {
+		Ant: Ant,
+		Board: Board,
+		Langton: Langton,
+		LangtonView: LangtonView,
+		Direction: Direction,
+		Position: Position
+	};
 })(Reveal, Observable);
