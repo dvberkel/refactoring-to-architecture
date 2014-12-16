@@ -1,6 +1,11 @@
 [
     "index.md",
     "meeting-dukes.md",
+	{
+		"attr": {
+			"data-background": "image/cube.jpg"
+		}
+	},
     {
         "filename": "timer.html",
         "attr": {
