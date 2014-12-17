@@ -72,9 +72,9 @@
 			}
 		};
 	})();
-	Reveal.addEventListener('langton-and', function(){
+	Reveal.addEventListener('langton-and1', function(){
 		if (!langton) {
-			var langtonContainer = document.getElementById('langtons-and');
+			var langtonContainer = document.getElementById('langtons-and1');
 
 			var ant = new ns.Ant(ns.Direction.EAST, ns.Position.at(-1, 5));
 

@@ -43,10 +43,12 @@
     "church-turing.md",
     "turing-complete.md",
     "nand.md",
-	{
-		"filename": "langtons-and.html",
-		"attr": {
-			"data-state": "langton-and"
+	[
+		{
+			"filename": "langtons-and1.html",
+			"attr": {
+				"data-state": "langton-and1"
+			}
 		}
-	}
+	]
 ]
