@@ -33,6 +33,10 @@
 		[9, 10],
 		[9, 10],
 		[9, 10],
+		[9, 10],
+		[9, 10],
+		[9, 10],
+		[9, 10],
 		[9, 10]
 	].map(function(row, index){
 		return row.map(function(column){ return [column, index]; });
