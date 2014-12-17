@@ -49,6 +49,12 @@
 			"attr": {
 				"data-state": "langton-and1"
 			}
+		},
+		{
+			"filename": "langtons-and2.html",
+			"attr": {
+				"data-state": "langton-and2"
+			}
 		}
 	]
 ]
