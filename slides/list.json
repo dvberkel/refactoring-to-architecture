@@ -43,18 +43,19 @@
     "church-turing.md",
     "turing-complete.md",
     "nand.md",
-	[
-		{
-			"filename": "langtons-and1.html",
-			"attr": {
-				"data-state": "langton-and1"
-			}
-		},
-		{
-			"filename": "langtons-and2.html",
-			"attr": {
-				"data-state": "langton-and2"
-			}
-		}
-	]
+    [
+        {
+            "filename": "langtons-and1.html",
+            "attr": {
+                "data-state": "langton-and1"
+            }
+        },
+        {
+            "filename": "langtons-and2.html",
+            "attr": {
+                "data-state": "langton-and2"
+            }
+        }
+    ],
+    "emergent-behavior.md"
 ]
